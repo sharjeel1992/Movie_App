@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Movie Details</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+</head>
+<body>
+<section id="one" class="wrapper style2">
+    <div class="inner">
+        <div class="content">
+            <header class="align-center">
+                <div class="cover-image">
+                    <img src="{{ movie.cover_image }}" alt="Movie Cover" />
+                </div>
+                <h2>{{ movie.movie_title }}</h2>
+                <h1> Release Year: {{ movie.publication_year }}</h1>
+                <h1> IMB Rating: {{ movie.movie_rating }}</h1>
+            </header>
+            <section>
+                <h3>Directors:</h3>
+                <ul>
+                    {% for director in directors %}
+                    <li>{{ director.dir_name }} (Birth Date: {{ director.birth_date }})</li>
+                    {% endfor %}
+                </ul>
+            </section>
+            <section>
+                <h3>Genres:</h3>
+                <ul>
+                    {% for genre in genres %}
+                    <li>{{ genre.genre_detail }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+            <footer class="align-center">
+                <a href="{{ url_for('add_review', movie_id=movie.movie_id) }}" class="button">Write a Review</a>
+            </footer>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts -->
+<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+</body>
+</html>
